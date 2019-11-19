@@ -5,17 +5,17 @@ using TheFlow.CoreConcepts;
 
 namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
 {
-    public class ActivityFlow
+    public class InboundOrderAvailableActivityFlow : IActivityFlow
     {
-        public static void StoreFlow()
+        public void StoreFlow()
         {
             var model = ProcessModel.Create(Guid.Parse("459f7fad-9ab9-45d5-aff9-f420d89477db"))
-                .AddEventCatcherFor<InboundOrderAvailableToUnload>("start")
+                .AddEventCatcherFor<InboundOrderAvailableToUnload>()
                 .AddActivity<CreatePalletsToUnload>("CreatePalletsToUnload")
                 .AddActivity<CreateCheckTasksForUnloadedPallets>("CreateCheckTasksForUnloadedPallets")
                 .AddActivity<CancelCheckTasksForPallets>("CancelCheckTasksForPallets")
                 .AttachAsCompensationActivity("CancelCheckTasksForPallets", "CreateCheckTasksForUnloadedPallets")
-                .AddEventThrower("end")
+                .AddEventThrower<CheckTasksCreated>()
                 .AddSequenceFlow("start", "CreatePalletsToUnload", "CreateCheckTasksForUnloadedPallets");
 
             ProcessManagerHolder.Instance.ModelsStore.Store(model);

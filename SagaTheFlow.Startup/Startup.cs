@@ -1,8 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SagaTheFlow.Activities;
+using SagaTheFlow.Activities.InboundOrderAvailableFlow;
 
 namespace SagaTheFlow
 {
@@ -19,6 +23,12 @@ namespace SagaTheFlow
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            IList activities = new List<IActivityFlow>() { new InboundOrderAvailableActivityFlow() };
+            foreach (IActivityFlow activity in activities)
+            {
+                activity.StoreFlow();
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

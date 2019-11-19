@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SagaTheFlow.Activities\SagaTheFlow.Activities.csproj" />
   </ItemGroup>
 
 </Project>
