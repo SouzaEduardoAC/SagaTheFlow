@@ -8,4 +8,8 @@
       <PackageReference Include="TheFlow" Version="0.0.1.63" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SagaTheFlow.Contracts\SagaTheFlow.Contracts.csproj" />
+    </ItemGroup>
+
 </Project>
