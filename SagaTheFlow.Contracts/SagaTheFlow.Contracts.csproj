@@ -4,4 +4,8 @@
         <TargetFramework>netcoreapp3.0</TargetFramework>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="TheFlow" Version="0.0.1.63" />
+    </ItemGroup>
+
 </Project>
