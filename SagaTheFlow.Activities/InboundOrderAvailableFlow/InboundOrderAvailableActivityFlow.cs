@@ -16,7 +16,7 @@ namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
                 .AddActivity<CancelCheckTasksForPallets>("CancelCheckTasksForPallets")
                 .AttachAsCompensationActivity("CancelCheckTasksForPallets", "CreateCheckTasksForUnloadedPallets")
                 .AddEventThrower<CheckTasksCreated>()
-                .AddSequenceFlow("start", "CreatePalletsToUnload", "CreateCheckTasksForUnloadedPallets");
+                .AddSequenceFlow("start", "CreatePalletsToUnload", "CreateCheckTasksForUnloadedPallets", "end");
 
             ProcessManagerHolder.Instance.ModelsStore.Store(model);
         }
