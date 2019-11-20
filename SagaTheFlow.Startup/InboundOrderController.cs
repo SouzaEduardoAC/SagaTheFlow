@@ -2,16 +2,17 @@
 using SagaTheFlow.Contracts.InboundOrderAvailableFlow;
 using SagaTheFlow.TheFlow;
 
-namespace StartUp.Controllers
+namespace SagaTheFlow
 {
     [ApiController]
     [Route("[controller]")]
     public class InboundOrderController : ControllerBase
     {
         [HttpGet]
-        public void StartFlow()
+        public IActionResult StartFlow()
         {
             ProcessManagerHolder.Instance.HandleEvent(new InboundOrderAvailableToUnload());
+            return Ok("ok");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
         public void StoreFlow()
         {
             var model = ProcessModel.Create(Guid.Parse("459f7fad-9ab9-45d5-aff9-f420d89477db"))
-                .AddEventCatcherFor<InboundOrderAvailableToUnload>()
+                .AddEventCatcherFor<InboundOrderAvailableToUnload>("start")
                 .AddActivity<CreatePalletsToUnload>("CreatePalletsToUnload")
                 .AddActivity<CreateCheckTasksForUnloadedPallets>("CreateCheckTasksForUnloadedPallets")
                 .AddActivity<CancelCheckTasksForPallets>("CancelCheckTasksForPallets")
