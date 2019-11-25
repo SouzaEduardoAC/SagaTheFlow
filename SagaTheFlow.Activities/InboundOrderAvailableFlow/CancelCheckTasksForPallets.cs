@@ -8,7 +8,7 @@ namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
     {
         public override void Run(ExecutionContext context)
         {
-            Console.WriteLine($"Cancelling check tasks for ID: {context.Instance.Id} with Token :{context.Token.Id}");
+            var haveReached = true;
         }
     }
 }
