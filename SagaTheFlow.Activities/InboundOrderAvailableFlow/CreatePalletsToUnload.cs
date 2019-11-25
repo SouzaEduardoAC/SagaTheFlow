@@ -1,5 +1,4 @@
-﻿using SagaTheFlow.TheFlow;
-using TheFlow.CoreConcepts;
+﻿using TheFlow.CoreConcepts;
 using TheFlow.Elements.Activities;
 
 namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
@@ -8,7 +7,7 @@ namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
     {
         public override void Run(ExecutionContext context)
         {
-            ProcessManagerHolder.Instance.HandleActivityCompletion(context.Instance.Id, context.Token.Id, new CreateCheckTasksForUnloadedPallets());
+            context.Instance.HandleActivityCompletion(context, new CreateCheckTasksForUnloadedPallets());
         }
     }
 }

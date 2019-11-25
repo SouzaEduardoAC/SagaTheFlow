@@ -1,6 +1,4 @@
-﻿using System;
-using SagaTheFlow.TheFlow;
-using TheFlow.CoreConcepts;
+﻿using TheFlow.CoreConcepts;
 using TheFlow.Elements.Activities;
 
 namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
@@ -9,9 +7,8 @@ namespace SagaTheFlow.Activities.InboundOrderAvailableFlow
     {
         public override void Run(ExecutionContext context)
         {
-            ProcessManagerHolder.Instance.HandleActivityFailure(
-                context.Instance.Id,
-                context.Token.Id,
+            context.Instance.HandleActivityFailure(
+                context,
                 null);
         }
     }
